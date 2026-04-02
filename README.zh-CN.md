@@ -22,6 +22,36 @@
 
 ---
 
+## 快速安装
+
+### 只安装 skill
+
+```bash
+git clone https://github.com/SpaceCao/ai-context-kit.git
+cd ai-context-kit
+python3 install.py
+```
+
+### 安装 skill 并初始化目标仓库
+
+```bash
+git clone https://github.com/SpaceCao/ai-context-kit.git
+cd ai-context-kit
+python3 install.py --target /path/to/repo
+```
+
+### 不安装 skill，直接初始化一个仓库
+
+```bash
+git clone https://github.com/SpaceCao/ai-context-kit.git
+cd ai-context-kit
+bash bootstrap.sh /path/to/repo
+```
+
+如果你明确要覆盖已有的已安装 skill 或 `.ai-context` 文件，可以加 `--force`。
+
+---
+
 ## 为什么要做这个
 
 大多数 AI coding / AI 设计场景都会在这些地方浪费 token：
@@ -264,6 +294,20 @@ python3 ~/.codex/skills/design-token-context/scripts/scaffold_ai_context.py --ta
 ```
 
 脚本会在目标仓库中生成 `.ai-context/`。
+
+### 方案 C：直接使用仓库脚本
+
+在克隆出来的仓库目录中运行：
+
+```bash
+python3 install.py --target /path/to/repo
+```
+
+或者：
+
+```bash
+bash bootstrap.sh /path/to/repo
+```
 
 ---
 

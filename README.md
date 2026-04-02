@@ -26,6 +26,36 @@ License:
 
 ---
 
+## Quick install
+
+### Install the skill only
+
+```bash
+git clone https://github.com/SpaceCao/ai-context-kit.git
+cd ai-context-kit
+python3 install.py
+```
+
+### Install the skill and initialize a target repository
+
+```bash
+git clone https://github.com/SpaceCao/ai-context-kit.git
+cd ai-context-kit
+python3 install.py --target /path/to/repo
+```
+
+### Initialize a repository without installing the skill
+
+```bash
+git clone https://github.com/SpaceCao/ai-context-kit.git
+cd ai-context-kit
+bash bootstrap.sh /path/to/repo
+```
+
+Use `--force` if you explicitly want to overwrite an existing installed skill or `.ai-context` files.
+
+---
+
 ## Why this exists
 
 Most AI coding and design workflows waste tokens in predictable ways:
@@ -268,6 +298,20 @@ python3 ~/.codex/skills/design-token-context/scripts/scaffold_ai_context.py --ta
 ```
 
 This will create `.ai-context/` in the target repository.
+
+### Option C: Use the repository scripts directly
+
+From the cloned repository:
+
+```bash
+python3 install.py --target /path/to/repo
+```
+
+or:
+
+```bash
+bash bootstrap.sh /path/to/repo
+```
 
 ---
 
