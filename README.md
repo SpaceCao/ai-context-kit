@@ -1,5 +1,9 @@
 # AI Context Kit
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/SpaceCao/ai-context-kit)](https://github.com/SpaceCao/ai-context-kit/commits/main)
+[![GitHub stars](https://img.shields.io/github/stars/SpaceCao/ai-context-kit?style=social)](https://github.com/SpaceCao/ai-context-kit/stargazers)
+
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 `AI Context Kit` is a reusable, low-token context strategy for design-phase AI work.
@@ -452,6 +456,19 @@ Rules:
 - let one summary file grow into another long document
 
 ---
+
+## Examples
+
+The repository now includes a minimal example project at `examples/minimal-design-repo/`.
+
+It shows how to structure:
+
+- `project-summary.md`
+- `topic-card-*.md`
+- `task-pack-*.md`
+- a small `docs/` area that acts as the source material
+
+Use this example if you want a concrete reference before applying the kit to your own repository.
 
 ## Suggested repository usage
 

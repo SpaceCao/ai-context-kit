@@ -1,5 +1,9 @@
 # AI Context Kit
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/SpaceCao/ai-context-kit)](https://github.com/SpaceCao/ai-context-kit/commits/main)
+[![GitHub stars](https://img.shields.io/github/stars/SpaceCao/ai-context-kit?style=social)](https://github.com/SpaceCao/ai-context-kit/stargazers)
+
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 `AI Context Kit` 是一套面向设计阶段 AI 工作流的低 token 上下文方案。
@@ -448,6 +452,19 @@ Rules:
 - 把摘要文件越写越长，最后变成新的长文档
 
 ---
+
+## 示例
+
+仓库现在提供了一个最小示例项目：`examples/minimal-design-repo/`。
+
+它展示了以下结构应该如何组织：
+
+- `project-summary.md`
+- `topic-card-*.md`
+- `task-pack-*.md`
+- 作为原始材料来源的小型 `docs/` 目录
+
+如果你想在迁移到自己仓库之前先看一个完整例子，可以直接从这个示例开始。
 
 ## 作为公共 Starter Kit 的使用建议
 
