@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Token Context"
+  short_description: "Low-token design context scaffold"
+  default_prompt: "Use $design-token-context to scaffold a low-token design-context workflow for this repo."

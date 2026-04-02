@@ -1,0 +1,39 @@
+{
+  "repo_name": "replace-with-your-repo-name",
+  "index_version": "v1",
+  "updated_at": "2026-04-02",
+  "retrieval_strategy": {
+    "step_1": "metadata_filter",
+    "step_2": "keyword_or_bm25",
+    "step_3": "vector_search_optional",
+    "step_4": "rerank"
+  },
+  "chunk_schema": {
+    "id": "unique-chunk-id",
+    "path": "docs/example.md",
+    "title": "章节标题",
+    "module": "billing",
+    "phase": "design",
+    "doc_type": "prd",
+    "evidence_level": "confirmed",
+    "keywords": ["结算", "对账", "发票"],
+    "summary": "该 chunk 的 1-2 句摘要",
+    "token_estimate": 260,
+    "chunk_text": "这里放切块后的正文"
+  },
+  "documents": [
+    {
+      "id": "prd-billing-001",
+      "path": "docs/prd/billing.md",
+      "title": "结算范围",
+      "module": "billing",
+      "phase": "design",
+      "doc_type": "prd",
+      "evidence_level": "confirmed",
+      "keywords": ["结算", "账单", "账期"],
+      "summary": "定义一期账单生成、账期结转、导出能力边界。",
+      "token_estimate": 240,
+      "chunk_text": "[在真实项目中替换为正文切块]"
+    }
+  ]
+}
