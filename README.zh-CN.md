@@ -100,6 +100,115 @@
 
 ---
 
+## 检索模式
+
+`AI Context Kit` 支持三种实用运行模式。
+
+### 1. 无向量模式
+
+适合：
+
+- 小型仓库
+- 目录结构清晰
+- 模块边界明确的任务
+
+使用：
+
+- `project-summary`
+- `topic-card`
+- `task-pack`
+- 目录路由
+- 关键词搜索或 BM25
+
+这种模式下**不需要额外安装向量库**。
+
+### 2. 混合模式
+
+适合：
+
+- 中等规模仓库
+- 跨模块设计任务
+- 关键词搜索有效，但偶尔召回不足的情况
+
+使用：
+
+- 元数据过滤
+- 关键词 / BM25 检索
+- 可选向量召回
+- chunk 发送给模型前做 rerank
+
+当“摘要优先 + 路由优先”开始漏召回时，这通常是最自然的升级路径。
+
+### 3. 向量模式
+
+适合：
+
+- 大型文档集合
+- PDF 多、知识库长
+- 用户问题更偏语义表达、关键词不稳定
+
+使用：
+
+- embedding
+- 向量库
+- 元数据过滤
+- 可选 rerank
+
+即使进入这个模式，也依然应该把 `project-summary`、`topic-card`、`task-pack` 作为主要上下文层。
+
+---
+
+## 向量检索的安装方式
+
+开始使用本仓库时，**并不需要**安装向量库。
+
+建议先跑通无向量模式，只有当检索质量确实不够时，再补向量检索。
+
+### 方案 A：Chroma
+
+适合本地实验和轻量文档库。
+
+```bash
+pip install chromadb
+```
+
+### 方案 B：FAISS
+
+适合本地进程内相似度检索。
+
+```bash
+pip install faiss-cpu
+```
+
+### 方案 C：Qdrant
+
+适合元数据过滤更强、服务化部署的场景。
+
+```bash
+docker run -p 6333:6333 qdrant/qdrant
+```
+
+或者：
+
+```bash
+pip install qdrant-client
+```
+
+### Embedding
+
+如果你要加向量检索，还需要 embedding 模型或 embedding API。
+
+常见选择：
+
+- OpenAI embeddings
+- 本地 embedding 模型，例如 `bge`、`gte`
+
+实践里，最小可用链路通常是：
+
+`documents -> chunking -> embeddings -> vector store -> rerank -> top chunks`
+
+---
+
 ## 仓库内容
 
 ### `.ai-context/`

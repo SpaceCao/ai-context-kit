@@ -104,6 +104,115 @@ The vector database is an accelerator, not the architecture.
 
 ---
 
+## Retrieval modes
+
+`AI Context Kit` supports three practical operating modes.
+
+### 1. No-vector mode
+
+Recommended for:
+
+- small repositories
+- clear directory structures
+- tasks with strong module boundaries
+
+Use:
+
+- `project-summary`
+- `topic-card`
+- `task-pack`
+- directory routing
+- keyword search or BM25
+
+No extra vector infrastructure is required.
+
+### 2. Hybrid mode
+
+Recommended for:
+
+- medium-sized repositories
+- cross-module design work
+- cases where keyword search is good but not always sufficient
+
+Use:
+
+- metadata filtering
+- keyword/BM25 retrieval
+- optional vector recall
+- reranking before sending chunks to the model
+
+This is the default upgrade path once summary-first routing starts to miss relevant evidence.
+
+### 3. Vector mode
+
+Recommended for:
+
+- large document collections
+- many PDFs or long knowledge bases
+- semantically phrased queries where keyword matching is weak
+
+Use:
+
+- embeddings
+- a vector database
+- metadata filters
+- optional reranking
+
+Even in this mode, keep `project-summary`, `topic-card`, and `task-pack` as the primary context layers.
+
+---
+
+## Installation options for vector search
+
+You do **not** need to install any vector stack to start using this repository.
+
+Start with no-vector mode first. Add vector search only when retrieval quality actually requires it.
+
+### Option A: Chroma
+
+Good for local experiments and lightweight document stores.
+
+```bash
+pip install chromadb
+```
+
+### Option B: FAISS
+
+Good for local in-process similarity search.
+
+```bash
+pip install faiss-cpu
+```
+
+### Option C: Qdrant
+
+Good for stronger metadata filtering and service-style deployment.
+
+```bash
+docker run -p 6333:6333 qdrant/qdrant
+```
+
+or:
+
+```bash
+pip install qdrant-client
+```
+
+### Embeddings
+
+If you add vector retrieval, you will also need an embedding model or embedding API.
+
+Typical choices:
+
+- OpenAI embeddings
+- local embedding models such as `bge` or `gte`
+
+In practice, the minimum useful stack is:
+
+`documents -> chunking -> embeddings -> vector store -> rerank -> top chunks`
+
+---
+
 ## What is included
 
 ### `.ai-context/`
