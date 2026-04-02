@@ -13,6 +13,10 @@
 
 - `skills/design-token-context/`
 
+GitHub 仓库地址：
+
+- `https://github.com/SpaceCao/ai-context-kit`
+
 ---
 
 ## 什么时候用向量库
@@ -44,6 +48,47 @@
 ├── prompt.template.md
 └── retrieval-index.template.json
 ```
+
+---
+
+## 快速开始
+
+### 作为模板仓库使用
+
+1. 复制本仓库中的 `.ai-context/`
+2. 在你的项目里改名为实际文件：
+   - `project-summary.md`
+   - `topic-card-*.md`
+   - `task-pack-*.md`
+   - `prompt.md`
+   - `retrieval-index.json`
+3. 先手工填写 `project-summary.md`
+4. 每次任务只新增或更新当前 `task-pack`
+
+### 作为 Codex skill 使用
+
+如果你已经把 skill 安装到 `~/.codex/skills/design-token-context/`，可以直接：
+
+1. 使用 `design-token-context` skill
+2. 运行脚手架脚本：
+
+```bash
+python3 ~/.codex/skills/design-token-context/scripts/scaffold_ai_context.py --target /path/to/repo
+```
+
+3. 在目标仓库中填充最小上下文：
+   - `.ai-context/project-summary.md`
+   - `.ai-context/topic-card-*.md`
+   - `.ai-context/task-pack-*.md`
+
+### 给 Claude / Codex 的最小喂法
+
+固定顺序：
+
+1. `project-summary`
+2. 当前 `task-pack`
+3. 1-3 张相关 `topic-card`
+4. 必要时补 3-6 个原文 chunk
 
 ---
 
@@ -125,3 +170,10 @@
 2. 先手工填 `project-summary`
 3. 先只用关键词/BM25
 4. 只有召回效果不够时再接 Qdrant / Chroma / FAISS
+
+---
+
+## 开发备注
+
+- 当前仓库已写入 repo-local GitHub 代理配置：`http.https://github.com/.proxy=http://127.0.0.1:58591`
+- 这样后续在本仓库执行 `git push` 不需要手工再带 `HTTPS_PROXY`
