@@ -81,7 +81,71 @@ python3 ~/.codex/skills/design-token-context/scripts/scaffold_ai_context.py --ta
    - `.ai-context/topic-card-*.md`
    - `.ai-context/task-pack-*.md`
 
-### 给 Claude / Codex 的最小喂法
+### 作为 Claude Code 使用
+
+推荐方式：
+
+1. 先在目标仓库准备 `.ai-context/`
+2. 只把以下文件喂给 Claude Code：
+   - `.ai-context/project-summary.md`
+   - 当前 `.ai-context/task-pack-*.md`
+   - 1-3 个相关 `.ai-context/topic-card-*.md`
+3. 只有证据不足时，再补少量原文 chunk
+
+推荐提示词：
+
+```text
+你现在只基于以下上下文工作：
+1. project-summary
+2. 当前 task-pack
+3. 指定的 topic-card
+4. 必要时补充的少量原文 chunk
+
+要求：
+- 不要默认读取整个仓库
+- 结论区分：已确认 / 高概率 / 待确认
+- 如果上下文不足，先输出“补充检索建议”
+- 本次只解决当前任务，不跨模块发散
+```
+
+如果你在 Claude Code 里允许读文件，优先让它只读这些 `.ai-context` 文件，不要上来就扫全仓库。
+
+### 作为 Gemini 使用
+
+适用方式：
+
+- Gemini CLI：把 `.ai-context` 文件内容按顺序提供
+- Gemini 网页 / App：把最小上下文复制进去，不贴整份长文档
+
+推荐顺序：
+
+1. `.ai-context/project-summary.md`
+2. 当前 `.ai-context/task-pack-*.md`
+3. 相关 `.ai-context/topic-card-*.md`
+4. 必要时补 3-6 个原文 chunk
+
+推荐提示词：
+
+```text
+请只基于我提供的 project-summary、task-pack、topic-card 和少量证据片段工作。
+
+要求：
+- 不要要求读取整个仓库
+- 优先在现有上下文内完成任务
+- 如果证据不足，先告诉我还需要检索哪些关键词或文件
+- 输出时区分：已确认 / 高概率 / 待确认
+```
+
+Gemini 特别适合先做：
+
+- 方案对比
+- 信息收敛
+- 结构化大纲
+- 风险和缺口清单
+
+不适合一开始就给它整份 PRD、整份代码树、整仓库对话历史。
+
+### 给 Claude / Codex / Gemini 的最小喂法
 
 固定顺序：
 
