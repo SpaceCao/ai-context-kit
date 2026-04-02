@@ -16,6 +16,10 @@ Repository:
 
 - `https://github.com/SpaceCao/ai-context-kit`
 
+License:
+
+- `MIT`
+
 ---
 
 ## Why this exists
