@@ -1,5 +1,7 @@
 # AI Context Kit
 
+[English](README.md) | [简体中文](README.zh-CN.md)
+
 `AI Context Kit` is a reusable, low-token context strategy for design-phase AI work.
 
 It helps you avoid the common failure mode of sending an entire repository, PRD, or long design document to an LLM on every turn. Instead, it organizes context into small, stable layers and retrieves only what is needed for the current task.
